@@ -28,32 +28,46 @@
             Console.WriteLine("Type second number");
             var userSecondNumber = Console.ReadLine();
             Console.WriteLine("Type mathematic operation");
-            var userMathematicOperation = Console.ReadLine();
+            var userMathematicalOperation = Console.ReadLine();
+            double firstNumber;
+            double secondNumber;
+            try
+            {
+               firstNumber = Convert.ToDouble(userFirstNumber);
+               secondNumber = Convert.ToDouble(userSecondNumber);
 
-            double firstNumber = Convert.ToDouble(userFirstNumber);
-            double secondNumber = Convert.ToDouble(userSecondNumber);
-
-            double result;
-            if(userMathematicOperation == "+")
+            }catch(Exception error)
             {
-                result = add(firstNumber, secondNumber);
+                Console.WriteLine(error.Message);
+                return;
             }
-            else if(userMathematicOperation == "-")
-            {
-                result = subtract(firstNumber, secondNumber);
-            }
-            else if (userMathematicOperation == "*")
-            {
-                result = multiply(firstNumber, secondNumber);
-            }
-            else
-            {
-                result = divide(firstNumber, secondNumber);
-            }
-            Console.WriteLine(result);
-            
 
             
+            if(userMathematicalOperation == "+" || userMathematicalOperation == "-" || userMathematicalOperation == "*" || userMathematicalOperation == "/")
+            {
+                double result;
+                if (userMathematicalOperation == "+")
+                {
+                    result = add(firstNumber, secondNumber);
+                }
+                else if (userMathematicalOperation == "-")
+                {
+                    result = subtract(firstNumber, secondNumber);
+                }
+                else if (userMathematicalOperation == "*")
+                {
+                    result = multiply(firstNumber, secondNumber);
+                }
+                else 
+                {
+                    result = divide(firstNumber, secondNumber);
+                }
+                Console.WriteLine("Result is " + result);
+                return;
+            }
+            Console.WriteLine("I dont know this mathematical operation");
+            return;
+         
         }
         
         
